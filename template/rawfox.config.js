@@ -2,6 +2,6 @@ export default {
     input: "./src/",
     output: "./dist/",
     outputOptions: {
-        declarationFile: true,
+        declarationFile: __declaration__,
     }
 }
