@@ -1,7 +1,3 @@
-<template>
-    <!--Build your fist Web Component.-->
-    <div rawfox-use="baseElement">{{ $syncData.count }}</div>
-</template>
 <script lang="js">
     //This is the Configuration Object.
     export default {
@@ -15,6 +11,10 @@
         }
     }
 </script>
+<template>
+    <!--Build your fist Web Component.-->
+    <div rawfox-use="baseElement">{{ $syncData.count }}</div>
+</template>
 <style>
     /*You can use <style> to construct styles for components.*/
     div {
