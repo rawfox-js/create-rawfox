@@ -1,0 +1,31 @@
+<template>
+    <!--Build your fist Web Component.-->
+    <div rawfox-use="baseElement">{{ $syncData.count }}</div>
+</template>
+<script lang="js">
+    //This is the Configuration Object.
+    export default {
+        name: "my-component", // The component name must be xxx-xxx.
+        syncData: { //Sync data, when the data update, the template will also update.
+            count: 1
+        },
+        mounted() { // When the component is mounted into the document, this function will be executed.
+            const base = useTemplate("baseElement")
+            base.onclick = () => this.syncData.count++
+        }
+    }
+</script>
+<style>
+    /*You can use <style> to construct styles for components.*/
+    div {
+        background-color: white;
+        color: black;
+        padding: 5px 8px;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+
+    &:hover {
+        background-color: rgb(230, 230, 230);
+    }
+</style>
