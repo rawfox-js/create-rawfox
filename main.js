@@ -21,6 +21,24 @@ const response = await prompts([
         name: 'projectOptions',
         message: '是否生成.d.ts文件？',
         initial: false,
+    },
+    {
+        type: "select",
+        name: "mode",
+        message: "以哪种模式打包？",
+        choices: [
+            {
+                title: "Web Component API",
+                description: "基于Web Component API生成文件（基于Shadow DOM API）",
+                value: "webComponent",
+            },
+            {
+                title: "DOM Nesting",
+                description: "原生DOM嵌套模式（会生成CSS文件来支持）",
+                value: "DOMNest"
+            }
+        ],
+        initial: 1
     }
 ])
 const targetDir = path.join(cwd, response.projectName)
@@ -38,6 +56,7 @@ function copyDir(src, dest) {
             let content = fs.readFileSync(srcPath, 'utf-8')
             content = content.replace(/\-projectname\-/g, response.projectName)
                 .replace(/__declaration__/g, response.projectOptions)
+                .replace(/__mode__/g, response.mode)
             fs.writeFileSync(destPath, content)
         }
     }
